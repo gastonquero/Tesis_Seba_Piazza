@@ -191,7 +191,16 @@ Phi.PSII.SP.1.ciclo.q.1 <- Phi.PSII.SP.1.ciclo.q.1 %>%
                            dplyr::mutate (trat = str_c (ambiente, protocolo, genotipo)) %>%
                            dplyr::mutate (amb.ppfd = str_c (ambiente, ppfd.amb)) 
   
+unique ( Phi.PSII.SP.1.ciclo.q.1$amb.ppfd  )
 
+LB800.1700 <- Phi.PSII.SP.1.ciclo.q.1 %>%
+  dplyr::filter (amb.ppfd ==  "LB800") %>%
+  dplyr::filter ( ppfd.act  == 1700)
+
+potX <- unique (LB800.1700$filt.pot)
+
+Phi.PSII.SP.1.ciclo.q.1 <-  Phi.PSII.SP.1.ciclo.q.1 %>%
+  dplyr::filter (!filt.pot %in% potX)
 
 
 # primer grafo con la particion principal de energia 
@@ -316,7 +325,7 @@ plot (net.principal.phi,
 #Create a network object using tidygraph:
 #  Key function: tbl_graph().
 # key arguments: nodes, edges and directed.
-#library(tidygraph)
+library(tidygraph)
 
 net.tidy.principal.phi <- tbl_graph (
   nodes = vertices, edges = aristas, directed = FALSE
