@@ -1,13 +1,13 @@
 ##########################################################
 #  Analisis de Datos Luz actinica PAM                    #
-#   Ambientes luminicos SP.1                             #
+#   Ambientes luminicos JD.1                             #
 #                                                        #
 # Gaston Quero - Sebastian Fernandez - Sebastian Simondi #
-#           27-07-2021                                   #
+#           10-11-2021                                   #
 ##########################################################
 
 getwd ()
-setwd ("R:/Tesis_Seba_Piazza")
+setwd ("R:/Tesis_Juan_Duhalde")
 
 # seteo el directorio  #### Aca se cambia segun donde tengas los datos 
                           # Esta linea se corre una sola vez en cada caso, y se 
@@ -49,24 +49,24 @@ dir.data.base <- ("C:/Users/Usuario/OneDrive/Documentos/Paper_fotosintesis_dinam
 
 #:\Users\Usuario\OneDrive\Documentos\Paper_fotosintesis_dinamica\Data\rawdata\Relevamiento_Luz\ambientes_luminicos_SP.1
 
-#########  LB.400  #####################################
-
 dist_espectral_uw_SP.1_400_raw <- read.table (file =str_c(dir.data.base,"/Data/rawdata/Relevamiento_Luz/ambientes_luminicos_SP.1/sp.1.lb400_AbsoluteIrradiance_11-46-13-025.txt"),
-                                         header = FALSE, sep = "\t",dec = ",", skip=30)
+                                              header = FALSE, sep = "\t",dec = ",", skip=30)
 
 colnames (dist_espectral_uw_SP.1_400_raw) <- c("lambda", "uW_nm.cm2")
+
 
 dist_espectral_uw_SP.1_400_raw <- dist_espectral_uw_SP.1_400_raw %>%
                                   dplyr::mutate (punto= "X")
 
-
-
 #########  LB.800  #####################################
 
+
 dist_espectral_uw_SP.1_800_raw <- read.table (file =str_c(dir.data.base,"/Data/rawdata/Relevamiento_Luz/ambientes_luminicos_SP.1/sp.1.lb800_AbsoluteIrradiance_11-49-39-524.txt"),
+                                              
                                               header = FALSE, sep = "\t",dec = ",", skip=30)
 
 colnames (dist_espectral_uw_SP.1_800_raw) <- c("lambda", "uW_nm.cm2")
+
 
 dist_espectral_uw_SP.1_800_raw <- dist_espectral_uw_SP.1_800_raw %>%
                                   dplyr::mutate (punto= "X")
@@ -75,7 +75,7 @@ dist_espectral_uw_SP.1_800_raw <- dist_espectral_uw_SP.1_800_raw %>%
 #########  LB.800a  #####################################
 
 dist_espectral_uw_SP.1_800a_raw <- read.table (file =str_c(dir.data.base,"/Data/rawdata/Relevamiento_Luz/ambientes_luminicos_SP.1/SP.1_LB.800_AbsoluteIrradiance_1.txt"),
-                                              header = FALSE, sep = "\t",dec = ",", skip=14)
+                                               header = FALSE, sep = "\t",dec = ",", skip=14)
 
 colnames (dist_espectral_uw_SP.1_800a_raw) <- c("lambda", "uW_nm.cm2")
 
@@ -83,16 +83,22 @@ dist_espectral_uw_SP.1_800a_raw <- dist_espectral_uw_SP.1_800a_raw %>%
                                    dplyr::mutate (punto= "X")
 
 
-
 #########  LB.Inv  #####################################
 
 dist_espectral_uw_SP.1_Inv_raw <- read.table (file =str_c(dir.data.base,"/Data/rawdata/Relevamiento_Luz/ambientes_luminicos_SP.1/euca.invernaculo_AbsoluteIrradiance_13-00-51-880.txt"),
-                                               header = FALSE, sep = "\t",dec = ",", skip=30)
+                                              header = FALSE, sep = "\t",dec = ",", skip=30)
+
 
 colnames (dist_espectral_uw_SP.1_Inv_raw) <- c("lambda", "uW_nm.cm2")
 
 dist_espectral_uw_SP.1_Inv_raw <- dist_espectral_uw_SP.1_Inv_raw %>%
                                   dplyr::mutate (punto= "X")
+
+
+
+
+
+
 
 
 # Construccion de la matriz de lambdas
